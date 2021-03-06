@@ -3,6 +3,7 @@
 <button type="button" (click) = "mostrarUsuario(userId.value)">Mostrar</button><br>
 <hr>
 <div *ngIf="usuario!=null; else noExiste">
+Id: {{usuarioId}} <br>   
 Nombre:{{usuario.nombre}} <br>
 Apellido1:{{usuario.apellido1}} <br>
 Apellido2:{{usuario.apellido2}} <br>
@@ -10,5 +11,5 @@ Apellido2:{{usuario.apellido2}} <br>
 </div>
 <ng-template #noExiste> 
   El usuario con id {{usuarioId} no existe
-
+  <hr>
 </ng-template>
