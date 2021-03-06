@@ -2,9 +2,12 @@
 ¿Que usuario quieres que te muestre? <input #userId><br>
 <button type="button" (click) = "mostrarUsuario(userId.value)">Mostrar</button><br>
 <hr>
-<div *ngIf="usuario!=null">
+<div *ngIf="usuario!=null"; else noExiste>
 Nombre:{{usuario.nombre}} <br>
 Apellido1:{{usuario.apellido1}} <br>
 Apellido2:{{usuario.apellido2}} <br>
 <hr>
 </div>
+<ng-template #noExiste> 
+  El usuario con id {{usuarioId} no existe
+</ng-template>

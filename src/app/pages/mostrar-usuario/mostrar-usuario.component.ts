@@ -10,16 +10,18 @@ import { UsuarioService } from '../../share/usuario.service';
 export class MostrarUsuarioComponent implements OnInit {
   public usuario : Usuario
   public usuarios: Usuario[]
+  public usuarioId: number;
 
   constructor(private apiService: UsuarioService) { }
 
   mostrarUsuario(id:number)
   {
-        this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
-        {    
-          this.usuario = data[0];
-        }   
-        )
+    this.usuarioId = id;
+    this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
+    {    
+      this.usuario = data[0];
+    }   
+    )
   }  
     
     ngOnInit(): void 
