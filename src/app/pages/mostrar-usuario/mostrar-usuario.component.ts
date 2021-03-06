@@ -17,7 +17,7 @@ export class MostrarUsuarioComponent implements OnInit {
   mostrarUsuario(id:number)
   {
     this.usuarioId = id;
-    this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
+    this.apiService.getUsuario(this.usuarioId).subscribe((data:Usuario[]) => 
     {    
       this.usuario = data[0];
     }   
