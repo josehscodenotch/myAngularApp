@@ -11,13 +11,18 @@ export class UsuarioService
 {
   private url = "https://my-api-rest1.herokuapp.com/usuarios";
 
-  public usuario: Usuario;
+  public usuarios: Usuario[];
   
   constructor(private http: HttpClient) { }
 
   getUsuario(id:number)
   {
     return this.http.get(this.url + "/" + id)
+  }
+
+  getUsuarios()
+  {
+    return this.http.get(this.url)
   }
 
   postUsuario(newUser: Usuario)

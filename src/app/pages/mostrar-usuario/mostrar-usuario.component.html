@@ -3,13 +3,16 @@
 <button type="button" (click) = "mostrarUsuario(userId.value)">Mostrar</button><br>
 <hr>
 <div *ngIf="usuario!=null">
-Id: {{usuarioId}} <br>   
-Nombre:{{usuario.nombre}} <br>
-Apellido1:{{usuario.apellido1}} <br>
-Apellido2:{{usuario.apellido2}} <br>
-<hr>
-
-<div *ngIf="usuario==null">
-    El usuario con id {{usuarioId} no existe
-    <hr>
+<b>Id:</b> {{usuario.id}} <br>   
+<b>Nombre:</b>{{usuario.nombre}} <br>
+<b>Apellido1:</b>{{usuario.apellido1}} <br>
+<b>Apellido2:</b>{{usuario.apellido2}} <br>
 </div>
+
+<ul>
+    <li *ngFor="let user of apiService.usuarios">
+        <b>{{user.id}} - Nombre:</b> {{user.nombre}} - <b>Apellido1:</b> {{user.apellido1}} - <b>Apellido2:</b> {{user.apellido2}}
+    </li> 
+</ul>
+
+<hr>

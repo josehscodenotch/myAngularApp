@@ -20,7 +20,8 @@ export class InsertarUsuarioComponent implements OnInit
 
   insertarUsuario(nombre:string, apellido1: string, apellido2:string)
   {
-    this.apiService.postUsuario(new Usuario(0,nombre,apellido1, apellido2))
+    let nuevoUsuario: Usuario = new Usuario(0,nombre,apellido1, apellido2)
+    this.apiService.postUsuario(nuevoUsuario)
     .subscribe((data:string) =>
     {
       console.log(data);
@@ -28,7 +29,8 @@ export class InsertarUsuarioComponent implements OnInit
         alert("Se ha insertado el usuario con id: " + data)
       else
         alert("Error al insertar al usuario");
-
+      nuevoUsuario.id = Number(data);  
+      this.apiService.usuarios.push(nuevoUsuario);
     })
 
   } 

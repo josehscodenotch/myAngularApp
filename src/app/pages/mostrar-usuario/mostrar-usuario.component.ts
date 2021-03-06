@@ -10,27 +10,33 @@ import { UsuarioService } from '../../share/usuario.service';
 export class MostrarUsuarioComponent implements OnInit {
   public usuario : Usuario
   public usuarios: Usuario[]
-  public usuarioId: number;
 
-  constructor(private apiService: UsuarioService) { }
+  constructor(public apiService: UsuarioService) { }
 
   mostrarUsuario(id:number)
   {
-    this.usuarioId = id;
-    if (this.usuarioId > 0)
+    if (id > 0)
     {
-      this.apiService.getUsuario(this.usuarioId).subscribe((data:Usuario[]) => 
+      this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
       {    
         this.usuario = data[0];
+        this.apiService.usuarios = null;
       }   
       )
     }
     else
-      this.usuario = null;
+    {
+      this.apiService.getUsuarios().subscribe((data:Usuario[]) => 
+      {    
+        this.apiService.usuarios = data;
+        this.usuario = null;
+      }   
+      )
+    }
   }  
     
-    ngOnInit(): void 
-    {
-    }
+  ngOnInit(): void 
+  {
+  }
 
 }
