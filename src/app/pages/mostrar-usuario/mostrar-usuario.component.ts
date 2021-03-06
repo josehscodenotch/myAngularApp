@@ -17,11 +17,16 @@ export class MostrarUsuarioComponent implements OnInit {
   mostrarUsuario(id:number)
   {
     this.usuarioId = id;
-    this.apiService.getUsuario(this.usuarioId).subscribe((data:Usuario[]) => 
-    {    
-      this.usuario = data[0];
-    }   
-    )
+    if (this.usuarioId > 0)
+    {
+      this.apiService.getUsuario(this.usuarioId).subscribe((data:Usuario[]) => 
+      {    
+        this.usuario = data[0];
+      }   
+      )
+    }
+    else
+      this.usuario = null;
   }  
     
     ngOnInit(): void 
