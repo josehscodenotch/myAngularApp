@@ -10,16 +10,23 @@ import { UsuarioService } from '../../share/usuario.service';
 export class MostrarUsuarioComponent implements OnInit {
   public usuario : Usuario
   public usuarios: Usuario[]
+  public noExiste: boolean;
+  public idBuscado: number;
 
-  constructor(public apiService: UsuarioService) { }
+  constructor(public apiService: UsuarioService) 
+  {
+    this.noExiste = false;
+  }
 
   mostrarUsuario(id:number)
   {
+    this.idBuscado = id;
     if (id > 0)
     {
       this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
       {    
         this.usuario = data[0];
+        this.noExiste = (this.usuario==undefined);
         this.apiService.usuarios = null;
       }   
       )
