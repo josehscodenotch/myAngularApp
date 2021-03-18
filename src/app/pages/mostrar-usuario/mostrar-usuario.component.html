@@ -1,22 +1,57 @@
+<div class = "contenido">
 <h3> Mostrar usuario</h3>
-¿Que usuario quieres que te muestre? <input #userId><br>
-<button type="button" (click) = "mostrarUsuario(userId.value)">Mostrar</button><br>
-<hr>
-<div *ngIf="usuario!=null;">
-<b>Id:</b> {{usuario.id}} <br>   
-<b>Nombre:</b>{{usuario.nombre}} <br>
-<b>Apellido1:</b>{{usuario.apellido1}} <br>
-<b>Apellido2:</b>{{usuario.apellido2}} <br>
-</div>
 
+<form>
+    <label>¿Que usuario quieres que te muestre? </label> &nbsp;
+    <input type="text"  #userId>&nbsp;
+      <button type="button" class="btn btn-outline-primary" (click) = "mostrarUsuario(userId.value)">Mostrar</button>
+</form>
+<hr>
+<div *ngIf="usuario!=null" class="col-md-3">
+<table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row">Id</th>
+        <td>{{usuario.id}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nombre</th>
+        <td>{{usuario.nombre}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Apellido 1</th>
+        <td>{{usuario.apellido1}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Apellido 2</th>
+        <td>{{usuario.apellido2}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div *ngIf="noExiste">
     El usuario con id {{idBuscado}} no existe.
 </div>
 
-<ul>
-    <li *ngFor="let user of apiService.usuarios">
-        <b>{{user.id}} - Nombre:</b> {{user.nombre}} - <b>Apellido1:</b> {{user.apellido1}} - <b>Apellido2:</b> {{user.apellido2}}
-    </li> 
-</ul>
-
+<div *ngIf="apiService.usuarios!=null" class="col-md-4">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido 1</th>
+        <th scope="col">Apellido 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of apiService.usuarios">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.nombre}}</td>
+        <td>{{user.apellido1}}</td>
+        <td>{{user.apellido2}}</td>
+      </tr>    
+    </tbody>
+  </table>
+</div>
 <hr>
+</div>
