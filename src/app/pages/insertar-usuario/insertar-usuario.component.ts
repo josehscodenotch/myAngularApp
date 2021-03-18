@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../share/usuario.service';
 
@@ -12,11 +13,11 @@ export class InsertarUsuarioComponent implements OnInit
 
   public message:string
 
-  constructor(private apiService: UsuarioService) 
+  constructor(private apiService: UsuarioService, private toast: ToastrService) 
   { 
     this.message = null;
-  }
 
+  }
 
   insertarUsuario(nombre:string, apellido1: string, apellido2:string)
   {
@@ -26,9 +27,9 @@ export class InsertarUsuarioComponent implements OnInit
     {
       console.log(data);
       if (data != "-1")
-        alert("Se ha insertado el usuario con id: " + data)
+        this.toast.success("Usuario insertado satisfactoriamente con id: " + data);
       else
-        alert("Error al insertar al usuario");
+        this.toast.error("Error al insertar al usuario");
       nuevoUsuario.id = Number(data);  
       this.apiService.usuarios.push(nuevoUsuario);
     })
@@ -46,5 +47,6 @@ export class InsertarUsuarioComponent implements OnInit
   } 
   ngOnInit(): void 
   {
+   
   }
 }

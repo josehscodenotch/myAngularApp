@@ -7,6 +7,8 @@ import { InsertarUsuarioComponent } from './pages/insertar-usuario/insertar-usua
 import { MostrarUsuarioComponent } from './pages/mostrar-usuario/mostrar-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './pages/menu/menu.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MenuComponent } from './pages/menu/menu.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
