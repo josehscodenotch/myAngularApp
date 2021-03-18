@@ -18,22 +18,26 @@ export class InsertarUsuarioComponent implements OnInit
 
   insertarUsuario(nombre:string, apellido1: string, apellido2:string)
   {
-    let nuevoUsuario: Usuario = new Usuario(0,nombre,apellido1, apellido2)
-    this.apiService.postUsuario(nuevoUsuario)
-    .subscribe((data:string) =>
-    {
-      console.log(data);
-      if (data != "-1")
-        this.toast.success("Usuario insertado satisfactoriamente con id  " + data, "",
+    if (nombre == "" || apellido1 == "" || apellido2 == "")
+      this.toast.error("Falta un campo obligatorio.", "", 
+                       {timeOut: 2000, positionClass:'toast-center-center'});
+      
+    else
+    {  
+      let nuevoUsuario: Usuario = new Usuario(0,nombre,apellido1, apellido2)
+      this.apiService.postUsuario(nuevoUsuario)
+      .subscribe((data:string) =>
+      {
+        if (data != "-1")
+          this.toast.success("Usuario insertado satisfactoriamente con id  " + data, "",
+                            {timeOut: 2000, positionClass:'toast-center-center'});
+        else
+          this.toast.error("Error al insertar al usuario", "", 
                            {timeOut: 2000, positionClass:'toast-center-center'});
-      else
-        this.toast.error("Error al insertar al usuario", "", 
-                         {timeOut: 2000, positionClass:'toast-center-center'});
 
-      nuevoUsuario.id = Number(data);  
-      this.apiService.usuarios.push(nuevoUsuario);
-    })
-
+        nuevoUsuario.id = Number(data);  
+      })
+    }
   } 
 
   eliminarUsuario(id:string)

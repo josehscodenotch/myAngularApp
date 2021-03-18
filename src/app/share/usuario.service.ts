@@ -13,7 +13,10 @@ export class UsuarioService
 
   public usuarios: Usuario[];
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) 
+  { 
+    this.usuarios = [];
+  }
 
   getUsuario(id:number)
   {

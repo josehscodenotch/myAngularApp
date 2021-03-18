@@ -31,7 +31,7 @@
     </table>
   </div>
 
-  <div *ngIf="apiService.usuarios!=null" class="col-md-4">
+  <div *ngIf="apiService.usuarios!=null && apiService.usuarios.length > 0" class="col-md-4">
     <table class="table table-striped">
       <thead>
         <tr>
