@@ -11,11 +11,8 @@ import { UsuarioService } from '../../share/usuario.service';
 export class InsertarUsuarioComponent implements OnInit 
 {
 
-  public message:string
-
   constructor(private apiService: UsuarioService, private toast: ToastrService) 
   { 
-    this.message = null;
 
   }
 
@@ -27,9 +24,12 @@ export class InsertarUsuarioComponent implements OnInit
     {
       console.log(data);
       if (data != "-1")
-        this.toast.success("Usuario insertado satisfactoriamente con id: " + data);
+        this.toast.success("Usuario insertado satisfactoriamente con id  " + data, "",
+                           {timeOut: 2000, positionClass:'toast-center-center'});
       else
-        this.toast.error("Error al insertar al usuario");
+        this.toast.error("Error al insertar al usuario", "", 
+                         {timeOut: 2000, positionClass:'toast-center-center'});
+
       nuevoUsuario.id = Number(data);  
       this.apiService.usuarios.push(nuevoUsuario);
     })

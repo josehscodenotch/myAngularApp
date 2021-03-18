@@ -10,28 +10,23 @@ import { UsuarioService } from '../../share/usuario.service';
 })
 export class MostrarUsuarioComponent implements OnInit {
   public usuario : Usuario
-  public usuarios: Usuario[]
-  public noExiste: boolean;
-  public idBuscado: number;
 
   constructor(public apiService: UsuarioService, private toast: ToastrService) 
   {
-    this.noExiste = false;
+
   }
 
   mostrarUsuario(id:number)
   {
-    this.idBuscado = id;
     if (id > 0)
     {
       this.apiService.getUsuario(id).subscribe((data:Usuario[]) => 
       {    
         this.usuario = data[0];
-        console.log(this.usuario);
         if (this.usuario==undefined)
-        {console.log("pasa por aqui")
-        this.toast.warning("El usuario con id: " + id + " no existe.");
-      }
+          this.toast.warning("El usuario con id  " + id + " no existe.", "", 
+                             {timeOut: 2000, positionClass:'toast-center-center'});
+      
         this.apiService.usuarios = null;
       }   
       )
