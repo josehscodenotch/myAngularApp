@@ -13,7 +13,7 @@ export class MostrarUsuarioComponent implements OnInit {
 
   constructor(public apiService: UsuarioService, private toast: ToastrService) 
   {
-
+    this.apiService.usuarios = [];
   }
 
   mostrarUsuario(id:number)
@@ -44,6 +44,7 @@ export class MostrarUsuarioComponent implements OnInit {
     
   ngOnInit(): void 
   {
+    
   }
 
 }

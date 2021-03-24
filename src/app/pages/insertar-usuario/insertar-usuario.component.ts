@@ -29,13 +29,19 @@ export class InsertarUsuarioComponent implements OnInit
       .subscribe((data:string) =>
       {
         if (data != "-1")
+        {  
           this.toast.success("Usuario insertado satisfactoriamente con id  " + data, "",
                             {timeOut: 2000, positionClass:'toast-center-center'});
+ 
+          nuevoUsuario.id = Number(data); 
+          this.apiService.usuarios.push(nuevoUsuario); 
+            
+            
+        }
         else
           this.toast.error("Error al insertar al usuario", "", 
                            {timeOut: 2000, positionClass:'toast-center-center'});
 
-        nuevoUsuario.id = Number(data);  
       })
     }
   } 
