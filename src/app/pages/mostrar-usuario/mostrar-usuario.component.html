@@ -7,8 +7,9 @@
       <button type="button" class="btn btn-outline-primary" 
       (click) = "mostrarUsuario(userId.value)">Mostrar</button>
   </form>
-  <hr>
+
   <div *ngIf="usuario!=null" class="col-md-3">
+    <hr>
     <table class="table table-bordered">
       <tbody>
         <tr>
@@ -29,9 +30,11 @@
         </tr>
       </tbody>
     </table>
+    <hr>
   </div>
 
   <div *ngIf="apiService.usuarios!=null && apiService.usuarios.length > 0" class="col-md-4">
+    <hr>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -50,6 +53,7 @@
         </tr>    
       </tbody>
     </table>
+    <hr>
   </div>
-  <hr>
+ 
 </div>
