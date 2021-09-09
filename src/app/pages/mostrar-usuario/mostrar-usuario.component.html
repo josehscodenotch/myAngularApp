@@ -8,51 +8,55 @@
       (click) = "mostrarUsuario(userId.value)">Mostrar</button>
   </form>
 
-  <div *ngIf="usuario!=null" class="col-md-3">
+  <div *ngIf="usuario!=null">
     <hr>
-    <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <th scope="row" class="table-active">Id</th>
-          <td class="table-primary">{{usuario.id}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Nombre</th>
-          <td class="table-info">{{usuario.nombre}}</td>
-        </tr>
-        <tr>
-          <th scope="row" class="table-active">Apellido 1</th>
-          <td class="table-primary">{{usuario.apellido1}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Apellido 2</th>
-          <td class="table-info">{{usuario.apellido2}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-md-3">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row" class="table-active">Id</th>
+            <td class="table-primary">{{usuario.id}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Nombre</th>
+            <td class="table-info">{{usuario.nombre}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="table-active">Apellido 1</th>
+            <td class="table-primary">{{usuario.apellido1}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Apellido 2</th>
+            <td class="table-info">{{usuario.apellido2}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <hr>
   </div>
 
-  <div *ngIf="apiService.usuarios!=null && apiService.usuarios.length > 0" class="col-md-4">
+  <class= *ngIf="apiService.usuarios!=null && apiService.usuarios.length > 0">
     <hr>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido 1</th>
-          <th scope="col">Apellido 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of apiService.usuarios">
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.nombre}}</td>
-          <td>{{user.apellido1}}</td>
-          <td>{{user.apellido2}}</td>
-        </tr>    
-      </tbody>
-    </table>
+    <div class="col-md-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido 1</th>
+            <th scope="col">Apellido 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of apiService.usuarios">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.nombre}}</td>
+            <td>{{user.apellido1}}</td>
+            <td>{{user.apellido2}}</td>
+          </tr>    
+        </tbody>
+      </table>
+    </div>  
     <hr>
   </div>
  
