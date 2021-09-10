@@ -12,7 +12,7 @@ export class UsuarioService
   private url = "https://my-api-rest1.herokuapp.com/usuarios";
 
   public usuarios: Usuario[];
-  
+   
   constructor(private http: HttpClient) 
   { 
     this.usuarios = [];
